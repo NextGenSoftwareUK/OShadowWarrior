@@ -61,6 +61,9 @@
 
 
 #include <chrono>
+#ifdef OASIS_STAR_API
+#include "raze_ogengine_integration.h"
+#endif
 #include <thread>
 #include "c_cvars.h"
 #include "i_time.h"
@@ -761,6 +764,9 @@ void MainLoop ()
 			gameInput.UpdateInputScale();
 
 			TryRunTics (); // will run at least one tic
+#ifdef OASIS_STAR_API
+			Raze_STAR_Tick();
+#endif
 			// Update display, next frame, with current state.
 			I_StartTic();
 
